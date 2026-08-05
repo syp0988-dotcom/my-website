@@ -13,6 +13,43 @@
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const isTouch = window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
+  /* ---------- 图片配置应用（js/images.js 里的 SITE_IMAGES 字段） ---------- */
+  (function applyImages() {
+    const cfg = window.SITE_IMAGES;
+    if (!cfg) return;
+
+    if (cfg.portrait) {
+      const el = document.querySelector('[data-img="portrait"]');
+      if (el) el.src = cfg.portrait;
+    }
+    if (cfg.featured) {
+      const el = document.querySelector('[data-img="featured"]');
+      if (el) el.src = cfg.featured;
+    }
+    if (Array.isArray(cfg.works)) {
+      cfg.works.forEach((w, i) => {
+        const el = document.querySelector(`[data-img="work-${i + 1}"]`);
+        if (el && w.img) el.src = w.img;
+        if (el && w.alt) el.alt = w.alt;
+      });
+    }
+    if (Array.isArray(cfg.photos)) {
+      document.querySelectorAll(".photo-open").forEach((btn, i) => {
+        const p = cfg.photos[i];
+        if (!p) return;
+        const img = btn.querySelector("img");
+        if (img && p.img) img.src = p.img;
+        if (img && p.alt) img.alt = p.alt;
+        if (p.full) btn.dataset.full = p.full;
+        if (p.caption) btn.dataset.caption = p.caption;
+        const title = btn.querySelector(".photo-title");
+        const loc = btn.querySelector(".photo-loc");
+        if (title && p.title) title.textContent = p.title;
+        if (loc && p.loc) loc.textContent = p.loc;
+      });
+    }
+  })();
+
   /* ---------- 预加载计数 ---------- */
   const preloader = document.getElementById("preloader");
   const countEl = document.getElementById("preloaderCount");

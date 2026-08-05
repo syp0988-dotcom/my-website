@@ -7,7 +7,7 @@
   <meta name="description" content="cyjpj（孙严培）——专注 RAG 与 AI Agent 开发的本科生，南阳理工学院计算机与软件学院。">
 
   <!-- Favicon（可替换为你自己的图标） -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231D2440'/%3E%3Ccircle cx='46' cy='18' r='9' fill='%23FF5C39'/%3E%3Ctext x='14' y='46' font-family='Arial' font-weight='900' font-size='34' fill='%23F4F1E8'%3ECY%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231D2440'/%3E%3Ccircle cx='44' cy='20' r='12' fill='%23FF5C39'/%3E%3Ccircle cx='22' cy='42' r='7' fill='%23F4F1E8'/%3E%3C/svg%3E">
 
   <!-- 字体：Anton（英文大标题）+ Noto Sans SC（中文黑体）+ Space Grotesk（正文）+ Space Mono（标签） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,7 @@
       cyjpj
     </a>
     <nav class="header-nav" aria-label="主导航">
-      <a href="resume3d/site/" class="btn btn-pill btn-3d">3D 简历</a>
+      <a href="resume3d/site/" class="btn btn-pill btn-3d">3D 展厅</a>
       <a href="#contact" class="btn btn-pill btn-coral">联系我</a>
       <button class="burger" id="burger" aria-label="打开菜单" aria-expanded="false" aria-controls="menu">
         <span class="burger-line"></span>
@@ -62,7 +62,7 @@
       <a href="#latest" class="menu-link"><span class="menu-index">04</span>动态</a>
       <a href="#skills" class="menu-link"><span class="menu-index">05</span>技能</a>
       <a href="#contact" class="menu-link"><span class="menu-index">06</span>联系</a>
-      <a href="resume3d/site/" class="menu-link"><span class="menu-index">07</span>3D 简历</a>
+      <a href="resume3d/site/" class="menu-link"><span class="menu-index">07</span>3D 展厅</a>
     </nav>
     <div class="menu-foot">
       <p class="menu-mail">syp0988@gmail.com</p>
@@ -96,7 +96,7 @@
         <!-- 最新作品卡片 -->
         <a href="#works" class="hero-card" data-reveal>
           <div class="hero-card-media">
-            <img src="assets/featured.svg" alt="最新作品封面占位图">
+            <img src="assets/featured.svg" alt="最新作品封面占位图" data-img="featured">
             <span class="hero-card-badge mono">最新项目</span>
           </div>
           <div class="hero-card-body">
@@ -149,7 +149,7 @@
           <article class="work-card" data-reveal>
             <a href="#" class="work-card-link">
               <div class="work-media">
-                <img src="assets/work-1.svg" alt="项目一占位图">
+                <img src="assets/work-1.svg" alt="项目一占位图" data-img="work-1">
                 <span class="work-num mono">01</span>
               </div>
               <div class="work-body">
@@ -166,7 +166,7 @@
           <article class="work-card" data-reveal>
             <a href="#" class="work-card-link">
               <div class="work-media">
-                <img src="assets/work-2.svg" alt="项目二占位图">
+                <img src="assets/work-2.svg" alt="项目二占位图" data-img="work-2">
                 <span class="work-num mono">02</span>
               </div>
               <div class="work-body">
@@ -183,7 +183,7 @@
           <article class="work-card" data-reveal>
             <a href="#" class="work-card-link">
               <div class="work-media">
-                <img src="assets/work-3.svg" alt="项目三占位图">
+                <img src="assets/work-3.svg" alt="项目三占位图" data-img="work-3">
                 <span class="work-num mono">03</span>
               </div>
               <div class="work-body">
@@ -211,7 +211,7 @@
         <div class="photo-grid">
           <figure class="photo-card" data-reveal>
             <button class="photo-open" data-full="assets/photo-1.svg" data-caption="日落时分 · 海边" aria-label="查看大图：日落时分">
-              <img src="assets/photo-1.svg" alt="日落时分" loading="lazy">
+              <img src="assets/photo-1.svg" alt="日落时分" loading="lazy" data-img="photo-1">
               <figcaption>
                 <span class="photo-title">日落时分</span>
                 <span class="mono photo-loc">海边 · 占位照片</span>
@@ -220,7 +220,7 @@
           </figure>
           <figure class="photo-card" data-reveal>
             <button class="photo-open" data-full="assets/photo-2.svg" data-caption="城市夜色 · 街头" aria-label="查看大图：城市夜色">
-              <img src="assets/photo-2.svg" alt="城市夜色" loading="lazy">
+              <img src="assets/photo-2.svg" alt="城市夜色" loading="lazy" data-img="photo-2">
               <figcaption>
                 <span class="photo-title">城市夜色</span>
                 <span class="mono photo-loc">街头 · 占位照片</span>
@@ -229,7 +229,7 @@
           </figure>
           <figure class="photo-card" data-reveal>
             <button class="photo-open" data-full="assets/photo-3.svg" data-caption="山间晨雾 · 远行" aria-label="查看大图：山间晨雾">
-              <img src="assets/photo-3.svg" alt="山间晨雾" loading="lazy">
+              <img src="assets/photo-3.svg" alt="山间晨雾" loading="lazy" data-img="photo-3">
               <figcaption>
                 <span class="photo-title">山间晨雾</span>
                 <span class="mono photo-loc">远行 · 占位照片</span>
@@ -238,7 +238,7 @@
           </figure>
           <figure class="photo-card" data-reveal>
             <button class="photo-open" data-full="assets/photo-4.svg" data-caption="街头光影 · 老城" aria-label="查看大图：街头光影">
-              <img src="assets/photo-4.svg" alt="街头光影" loading="lazy">
+              <img src="assets/photo-4.svg" alt="街头光影" loading="lazy" data-img="photo-4">
               <figcaption>
                 <span class="photo-title">街头光影</span>
                 <span class="mono photo-loc">老城 · 占位照片</span>
@@ -247,7 +247,7 @@
           </figure>
           <figure class="photo-card" data-reveal>
             <button class="photo-open" data-full="assets/photo-5.svg" data-caption="森林深处 · 徒步" aria-label="查看大图：森林深处">
-              <img src="assets/photo-5.svg" alt="森林深处" loading="lazy">
+              <img src="assets/photo-5.svg" alt="森林深处" loading="lazy" data-img="photo-5">
               <figcaption>
                 <span class="photo-title">森林深处</span>
                 <span class="mono photo-loc">徒步 · 占位照片</span>
@@ -256,7 +256,7 @@
           </figure>
           <figure class="photo-card" data-reveal>
             <button class="photo-open" data-full="assets/photo-6.svg" data-caption="星空之下 · 露营" aria-label="查看大图：星空之下">
-              <img src="assets/photo-6.svg" alt="星空之下" loading="lazy">
+              <img src="assets/photo-6.svg" alt="星空之下" loading="lazy" data-img="photo-6">
               <figcaption>
                 <span class="photo-title">星空之下</span>
                 <span class="mono photo-loc">露营 · 占位照片</span>
@@ -295,8 +295,8 @@
         </div>
 
         <div class="about-portrait" data-reveal>
-          <img src="assets/portrait.svg" alt="个人照片占位图">
-          <span class="portrait-initials">CY</span>
+          <img src="assets/portrait.svg" alt="个人照片占位图" data-img="portrait">
+          <span class="portrait-initials">📷</span>
           <span class="portrait-tag mono">* 照片替换位置</span>
         </div>
       </div>
@@ -404,7 +404,7 @@
           <a href="#about">关于我</a>
           <a href="#latest">动态</a>
           <a href="#skills">技能</a>
-          <a href="resume3d/site/">3D 简历</a>
+          <a href="resume3d/site/">3D 展厅</a>
         </nav>
         <div class="footer-socials">
           <a href="#" aria-label="微博">微博</a>
@@ -434,6 +434,7 @@
     </figure>
   </div>
 
+  <script src="js/images.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

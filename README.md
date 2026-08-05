@@ -3,7 +3,7 @@
 一个文件夹同时包含两个网站：
 
 1. **个人主页**（根目录）—— 纯 HTML/CSS/JS 静态站，包含作品、摄影、关于我、动态、技能、联系等板块
-2. **3D 简历**（`resume3d/`）—— 基于 React Three Fiber 的滚动式 3D 简历（原 sen-3d-resume 项目），主页右上角「3D 简历」按钮可进入
+2. **3D 展厅**（`resume3d/`）—— 基于 React Three Fiber 的滚动式 3D 简历（原 sen-3d-resume 项目），主页右上角「3D 展厅」按钮可进入
 
 ## 目录结构
 
@@ -57,7 +57,7 @@ npm run dev        # 访问 http://localhost:5173
 | 3D 人物模型 | 用 Blender 改 `resume3d/blender/sen.blend`，导出 `resume3d/web/public/models/me.glb` |
 | 场景光照/背景色 | `resume3d/web/src/scene/Scene.tsx` 顶部常量 |
 
-改完 3D 简历源码后，需要重新构建，网页上的「3D 简历」入口才会更新：
+改完 3D 简历源码后，需要重新构建，网页上的「3D 展厅」入口才会更新：
 
 ```bash
 cd resume3d/web
@@ -79,6 +79,20 @@ npm run build
 
 `data-full` 是点击放大时显示的大图，`data-caption` 是灯箱下方的说明文字。
 想加照片，复制一个 `photo-card` 区块并改文件名即可。
+
+### 图片配置（js/images.js）—— 推荐方式
+
+主页所有图片都由 `js/images.js` 一个文件管理，**改图片不用碰 HTML**：
+
+| 字段 | 用途 | 建议尺寸 |
+| --- | --- | --- |
+| `portrait` | 关于我头像 | 4:5（如 800×1000） |
+| `featured` | 首屏最新作品卡片封面 | 16:10（如 800×500） |
+| `works` | 三张作品封面 | 4:5（如 800×1000） |
+| `photos` | 摄影栏目（`img` 缩略图 / `full` 点击放大图 / `caption` `title` `loc` 说明文字） | 4:3（如 1200×900） |
+
+把图片文件放进 `assets/` 文件夹，然后把字段里的路径改成你的文件名即可。
+当前所有字段都是占位图（`.svg`），可以直接替换。
 
 ## 部署上线
 
