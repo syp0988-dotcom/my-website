@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
+  <rect width="800" height="1000" fill="#E9E4D4"/>
+  <g stroke="#1D2440" stroke-opacity="0.14" stroke-width="2">
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="0" y1="600" x2="800" y2="600"/>
+    <line x1="0" y1="800" x2="800" y2="800"/>
+    <line x1="200" y1="0" x2="200" y2="1000"/>
+    <line x1="400" y1="0" x2="400" y2="1000"/>
+    <line x1="600" y1="0" x2="600" y2="1000"/>
+  </g>
+  <circle cx="600" cy="280" r="150" fill="#FF5C39"/>
+  <circle cx="600" cy="280" r="60" fill="#1D2440"/>
+  <rect x="140" y="560" width="240" height="160" rx="12" fill="#1D2440"/>
+  <text x="42" y="120" font-family="Arial, sans-serif" font-weight="900" font-size="64" fill="#1D2440" opacity="0.8">03</text>
+  <text x="42" y="940" font-family="Arial, sans-serif" font-weight="900" font-size="46" fill="#1D2440" letter-spacing="4">PLACEHOLDER</text>
+</svg>

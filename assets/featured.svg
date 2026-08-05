@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#E9E4D4"/>
+  <circle cx="620" cy="120" r="170" fill="#1D2440"/>
+  <circle cx="620" cy="120" r="82" fill="#FF5C39"/>
+  <path d="M-40 400 C 200 300 420 470 840 340 L 840 540 L -40 540 Z" fill="#1D2440" opacity="0.92"/>
+  <circle cx="150" cy="430" r="34" fill="#FF5C39"/>
+  <text x="48" y="92" font-family="Arial, sans-serif" font-weight="900" font-size="42" fill="#1D2440" opacity="0.7">FEATURED</text>
+</svg>

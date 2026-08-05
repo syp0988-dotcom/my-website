@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>cyjpj — AI 开发者 · RAG & Agent</title>
+  <meta name="description" content="cyjpj（孙严培）——专注 RAG 与 AI Agent 开发的本科生，南阳理工学院计算机与软件学院。">
+
+  <!-- Favicon（可替换为你自己的图标） -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231D2440'/%3E%3Ccircle cx='46' cy='18' r='9' fill='%23FF5C39'/%3E%3Ctext x='14' y='46' font-family='Arial' font-weight='900' font-size='34' fill='%23F4F1E8'%3ECY%3C/text%3E%3C/svg%3E">
+
+  <!-- 字体：Anton（英文大标题）+ Noto Sans SC（中文黑体）+ Space Grotesk（正文）+ Space Mono（标签） -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+SC:wght@400;700;900&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ======== 顶部滚动进度条 ======== -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ======== 细腻噪点纹理 ======== -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- ======== 自定义光标（仅鼠标设备显示） ======== -->
+  <div class="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ======== 预加载动画：数字计数 + 进度条 ======== -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <span class="preloader-label">cyjpj</span>
+      <span class="preloader-count" id="preloaderCount">000</span>
+    </div>
+    <div class="preloader-bar"><span id="preloaderBarFill"></span></div>
+  </div>
+
+  <!-- ======== 顶部导航 ======== -->
+  <header class="header" id="header">
+    <a class="logo" href="#top" aria-label="回到首页">
+      <span class="logo-mark" aria-hidden="true"></span>
+      cyjpj
+    </a>
+    <nav class="header-nav" aria-label="主导航">
+      <a href="resume3d/site/" class="btn btn-pill btn-3d">3D 简历</a>
+      <a href="#contact" class="btn btn-pill btn-coral">联系我</a>
+      <button class="burger" id="burger" aria-label="打开菜单" aria-expanded="false" aria-controls="menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ======== 全屏菜单 ======== -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu-links" aria-label="全屏菜单">
+      <a href="#works" class="menu-link"><span class="menu-index">01</span>作品</a>
+      <a href="#photography" class="menu-link"><span class="menu-index">02</span>摄影</a>
+      <a href="#about" class="menu-link"><span class="menu-index">03</span>关于我</a>
+      <a href="#latest" class="menu-link"><span class="menu-index">04</span>动态</a>
+      <a href="#skills" class="menu-link"><span class="menu-index">05</span>技能</a>
+      <a href="#contact" class="menu-link"><span class="menu-index">06</span>联系</a>
+      <a href="resume3d/site/" class="menu-link"><span class="menu-index">07</span>3D 简历</a>
+    </nav>
+    <div class="menu-foot">
+      <p class="menu-mail">syp0988@gmail.com</p>
+      <div class="menu-socials">
+        <a href="#" aria-label="微博">微博</a>
+        <a href="#" aria-label="X / Twitter">X</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="GitHub">GH</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- ======== HERO ======== -->
+    <section class="hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="hero-eyebrow mono" data-reveal>AI DEVELOPER — 2026</p>
+        <h1 class="hero-name" data-split aria-label="cyjpj">
+          <span>cyjpj</span>
+        </h1>
+        <p class="hero-tagline" data-reveal>
+          专注 <span class="accent-word">AI Agent</span> 与 RAG 开发<br>
+          <span class="hero-tagline-en">NANYANG INSTITUTE OF TECHNOLOGY · CLASS OF 2027</span>
+        </p>
+        <p class="hero-roles" data-reveal>
+          <span class="mono hero-roles-prefix">//</span>
+          <span id="roleText">RAG 全链路设计</span><span class="caret" aria-hidden="true">|</span>
+        </p>
+
+        <!-- 最新作品卡片 -->
+        <a href="#works" class="hero-card" data-reveal>
+          <div class="hero-card-media">
+            <img src="assets/featured.svg" alt="最新作品封面占位图">
+            <span class="hero-card-badge mono">最新项目</span>
+          </div>
+          <div class="hero-card-body">
+            <span class="mono hero-card-label">Featured Work</span>
+            <h2>OmniForge 多智能体 AI 协作平台</h2>
+            <p>基于 LangGraph 的多智能体平台：代码生成、RAG 知识库问答、工具调用与 SSE 流式交互。269 个自动化测试全部通过，端到端任务完成率 95.4%。</p>
+            <span class="link-arrow">查看详情 →</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- 旋转徽章 -->
+      <div class="hero-badge" aria-hidden="true">
+        <svg viewBox="0 0 100 100" class="hero-badge-svg">
+          <defs>
+            <path id="badgeCircle" d="M50,50 m-37,0 a37,37 0 1,1 74,0 a37,37 0 1,1 -74,0"></path>
+          </defs>
+          <text>
+            <textPath href="#badgeCircle">KEEP CURIOUS • KEEP CREATING • KEEP GOING •</textPath>
+          </text>
+        </svg>
+        <span class="hero-badge-dot"></span>
+      </div>
+
+      <div class="hero-scroll" aria-hidden="true">
+        <span class="mono">SCROLL</span>
+        <span class="hero-scroll-line"></span>
+      </div>
+    </section>
+
+    <!-- ======== 滚动标语带 ======== -->
+    <div class="marquee-outer" aria-hidden="true">
+      <div class="marquee">
+        <div class="marquee-track">
+          <span>RAG</span><i>•</i><span>AGENT</span><i>•</i><span>LANGRAPH</span><i>•</i><span>OPEN SOURCE</span><i>•</i><span>保持好奇</span><i>•</i>
+          <span>RAG</span><i>•</i><span>AGENT</span><i>•</i><span>LANGRAPH</span><i>•</i><span>OPEN SOURCE</span><i>•</i><span>保持好奇</span><i>•</i>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== 作品 ======== -->
+    <section class="section works" id="works">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-label mono">作品 <em>on the screen</em></h2>
+          <a href="https://github.com/syp0988-dotcom" target="_blank" rel="noopener noreferrer" class="link-arrow">GitHub →</a>
+        </div>
+
+        <div class="works-grid">
+          <article class="work-card" data-reveal>
+            <a href="#" class="work-card-link">
+              <div class="work-media">
+                <img src="assets/work-1.svg" alt="项目一占位图">
+                <span class="work-num mono">01</span>
+              </div>
+              <div class="work-body">
+                <p class="mono work-meta">AI 应用开发 — 2026.01–06</p>
+                <h3>OmniForge 多智能体 AI 协作平台</h3>
+                <p class="work-desc">基于 LangGraph 设计 7 节点 Agent 工作流：意图分析、知识检索、任务规划、执行调度、反思评估、答案生成、记忆管理；构建 10 个 Agent、10 个插件化工具与 34 个 API。</p>
+                <div class="work-tags">
+                  <span>LangGraph</span><span>FastAPI</span><span>RAG</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="work-card" data-reveal>
+            <a href="#" class="work-card-link">
+              <div class="work-media">
+                <img src="assets/work-2.svg" alt="项目二占位图">
+                <span class="work-num mono">02</span>
+              </div>
+              <div class="work-body">
+                <p class="mono work-meta">AI Agent 开发实习生 — 2025.07–09</p>
+                <h3>故障诊断智能体（天元智联）</h3>
+                <p class="work-desc">构建 Multi-Agent 系统实现告警分析、日志抓取到根因定位的全自动闭环；引入 Ragas 评估框架调优检索链路，将故障诊断平均耗时从 12 分钟缩短至 45 秒。</p>
+                <div class="work-tags">
+                  <span>Multi-Agent</span><span>LangGraph</span><span>Ragas</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="work-card" data-reveal>
+            <a href="#" class="work-card-link">
+              <div class="work-media">
+                <img src="assets/work-3.svg" alt="项目三占位图">
+                <span class="work-num mono">03</span>
+              </div>
+              <div class="work-body">
+                <p class="mono work-meta">RAG 检索优化 — 持续进行</p>
+                <h3>RAG 检索链路设计与优化</h3>
+                <p class="work-desc">构建完整 RAG 链路：文档解析、结构化切块、Embedding、混合检索、Rerank 与上下文增强；设计 6 类结构感知 Chunk 策略，支持 10+ 种文档格式，Recall@10 达 82.2%。</p>
+                <div class="work-tags">
+                  <span>Qdrant</span><span>Embedding</span><span>评估体系</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 摄影 ======== -->
+    <section class="section photography" id="photography">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-label mono">摄影 <em>through the lens</em></h2>
+          <a href="#contact" class="link-arrow">约片 / 交流</a>
+        </div>
+
+        <div class="photo-grid">
+          <figure class="photo-card" data-reveal>
+            <button class="photo-open" data-full="assets/photo-1.svg" data-caption="日落时分 · 海边" aria-label="查看大图：日落时分">
+              <img src="assets/photo-1.svg" alt="日落时分" loading="lazy">
+              <figcaption>
+                <span class="photo-title">日落时分</span>
+                <span class="mono photo-loc">海边 · 占位照片</span>
+              </figcaption>
+            </button>
+          </figure>
+          <figure class="photo-card" data-reveal>
+            <button class="photo-open" data-full="assets/photo-2.svg" data-caption="城市夜色 · 街头" aria-label="查看大图：城市夜色">
+              <img src="assets/photo-2.svg" alt="城市夜色" loading="lazy">
+              <figcaption>
+                <span class="photo-title">城市夜色</span>
+                <span class="mono photo-loc">街头 · 占位照片</span>
+              </figcaption>
+            </button>
+          </figure>
+          <figure class="photo-card" data-reveal>
+            <button class="photo-open" data-full="assets/photo-3.svg" data-caption="山间晨雾 · 远行" aria-label="查看大图：山间晨雾">
+              <img src="assets/photo-3.svg" alt="山间晨雾" loading="lazy">
+              <figcaption>
+                <span class="photo-title">山间晨雾</span>
+                <span class="mono photo-loc">远行 · 占位照片</span>
+              </figcaption>
+            </button>
+          </figure>
+          <figure class="photo-card" data-reveal>
+            <button class="photo-open" data-full="assets/photo-4.svg" data-caption="街头光影 · 老城" aria-label="查看大图：街头光影">
+              <img src="assets/photo-4.svg" alt="街头光影" loading="lazy">
+              <figcaption>
+                <span class="photo-title">街头光影</span>
+                <span class="mono photo-loc">老城 · 占位照片</span>
+              </figcaption>
+            </button>
+          </figure>
+          <figure class="photo-card" data-reveal>
+            <button class="photo-open" data-full="assets/photo-5.svg" data-caption="森林深处 · 徒步" aria-label="查看大图：森林深处">
+              <img src="assets/photo-5.svg" alt="森林深处" loading="lazy">
+              <figcaption>
+                <span class="photo-title">森林深处</span>
+                <span class="mono photo-loc">徒步 · 占位照片</span>
+              </figcaption>
+            </button>
+          </figure>
+          <figure class="photo-card" data-reveal>
+            <button class="photo-open" data-full="assets/photo-6.svg" data-caption="星空之下 · 露营" aria-label="查看大图：星空之下">
+              <img src="assets/photo-6.svg" alt="星空之下" loading="lazy">
+              <figcaption>
+                <span class="photo-title">星空之下</span>
+                <span class="mono photo-loc">露营 · 占位照片</span>
+              </figcaption>
+            </button>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 关于我 ======== -->
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <h2 class="section-label mono section-label-light" data-reveal>关于 <em>this guy</em></h2>
+          <h3 class="about-headline" data-split data-reveal>专注 AI Agent<br>与 RAG 开发</h3>
+          <p class="about-text" data-reveal>
+            我是 cyjpj（孙严培），南阳理工学院计算机与软件学院本科生，预计 2027 年 6 月毕业。
+            主攻 <em>RAG 与 AI Agent</em>：精通检索增强生成全链路（文档解析、Chunk 策略、Embedding、
+            混合检索、Rerank、效果评估），熟悉 LangGraph 多智能体架构与 AI 服务工程化。
+          </p>
+          <p class="about-text" data-reveal>
+            曾在河南天元智联科技担任 AI Agent 开发实习生，用 LangGraph 构建故障诊断智能体，
+            将平均诊断耗时从 12 分钟缩短至 45 秒、根因识别准确率从 65% 提升到 92%。
+            热爱开源技术，持续跟进业界最新的 Agent 论文与框架演进。
+          </p>
+          <div class="skill-chips" data-reveal>
+            <span>LangGraph</span><span>LangChain</span><span>FastAPI</span><span>Qdrant</span><span>RAG</span><span>Multi-Agent</span><span>Vue 3</span><span>TypeScript</span><span>Docker</span><span>Prompt Engineering</span>
+          </div>
+          <div class="about-stats" data-reveal>
+            <div class="stat"><strong data-count="269" data-suffix="">0</strong><span>自动化测试</span></div>
+            <div class="stat"><strong data-count="95.4" data-suffix="%">0</strong><span>端到端完成率</span></div>
+            <div class="stat"><strong data-count="82.2" data-suffix="%">0</strong><span>Recall@10</span></div>
+          </div>
+          <a href="#contact" class="btn btn-pill btn-outline" data-reveal>和我聊聊 →</a>
+        </div>
+
+        <div class="about-portrait" data-reveal>
+          <img src="assets/portrait.svg" alt="个人照片占位图">
+          <span class="portrait-initials">CY</span>
+          <span class="portrait-tag mono">* 照片替换位置</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 最新动态 ======== -->
+    <section class="section latest" id="latest">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-label mono section-label-light">最新 <em>Latest</em></h2>
+          <a href="#" class="link-arrow">查看全部动态</a>
+        </div>
+
+        <div class="news-list">
+          <a href="#" class="news-item" data-reveal>
+            <time class="mono news-date">2026.06</time>
+            <div class="news-body">
+              <h3>OmniForge 多智能体 AI 协作平台完成</h3>
+              <p>7 节点 Agent 工作流、10 个 Agent、10 个插件化工具、34 个 API，269 个自动化测试全部通过。</p>
+            </div>
+            <span class="news-arrow mono">→</span>
+          </a>
+          <a href="#" class="news-item" data-reveal>
+            <time class="mono news-date">2025.09</time>
+            <div class="news-body">
+              <h3>天元智联 AI Agent 开发实习结束</h3>
+              <p>故障诊断智能体已集成至公司核心运维产品：诊断耗时 12 分钟 → 45 秒，根因准确率 65% → 92%。</p>
+            </div>
+            <span class="news-arrow mono">→</span>
+          </a>
+          <a href="#" class="news-item" data-reveal>
+            <time class="mono news-date">2025.07</time>
+            <div class="news-body">
+              <h3>加入河南天元智联科技有限公司</h3>
+              <p>开始为期三个月的 AI Agent 开发实习，负责多智能体故障诊断系统的设计与实现。</p>
+            </div>
+            <span class="news-arrow mono">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== 金句 ======== -->
+    <section class="quote" data-reveal>
+      <div class="container">
+        <blockquote>
+          <span class="quote-mark" aria-hidden="true">“</span>
+          <p data-split>热爱开源与前沿 AI，<br>把每个想法做成稳定好用的产品。</p>
+          <cite>— cyjpj</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ======== 书籍 ======== -->
+    <section class="section books" id="skills">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <h2 class="section-label mono">技能 <em>on the stack</em></h2>
+          <a href="https://github.com/syp0988-dotcom" target="_blank" rel="noopener noreferrer" class="link-arrow">GitHub →</a>
+        </div>
+
+        <div class="books-grid">
+          <a href="#" class="book" data-reveal>
+            <div class="book-cover cover-a">
+              <span class="book-title">RAG 全链路</span>
+              <span class="book-author mono">Retrieval-Augmented Generation</span>
+              <span class="book-year mono">Chunk · Embedding · Rerank</span>
+            </div>
+            <p class="book-name">检索增强生成</p>
+            <p class="mono book-sub">解析 · 检索 · 评估 · 优化</p>
+          </a>
+          <a href="#" class="book" data-reveal>
+            <div class="book-cover cover-b">
+              <span class="book-title">Agent 架构</span>
+              <span class="book-author mono">ReAct · Workflow · Multi-Agent</span>
+              <span class="book-year mono">LangGraph 编排</span>
+            </div>
+            <p class="book-name">多智能体系统</p>
+            <p class="mono book-sub">规划 · 工具 · 记忆 · 反思</p>
+          </a>
+          <a href="#" class="book" data-reveal>
+            <div class="book-cover cover-c">
+              <span class="book-title">AI 工程化</span>
+              <span class="book-author mono">FastAPI · 异步 · 高并发</span>
+              <span class="book-year mono">路由 · 降级 · 成本控制</span>
+            </div>
+            <p class="book-name">服务工程化</p>
+            <p class="mono book-sub">稳定 · 高可用 · 可观测</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======== 联系 / 页脚 ======== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <h2 class="footer-headline" data-split>一起做点<br>有趣的事？</h2>
+      <a href="mailto:syp0988@gmail.com" class="btn btn-pill btn-coral btn-big" data-reveal>syp0988@gmail.com</a>
+
+      <div class="footer-mid">
+        <nav class="footer-nav" aria-label="页脚导航">
+          <a href="#works">作品</a>
+          <a href="#photography">摄影</a>
+          <a href="#about">关于我</a>
+          <a href="#latest">动态</a>
+          <a href="#skills">技能</a>
+          <a href="resume3d/site/">3D 简历</a>
+        </nav>
+        <div class="footer-socials">
+          <a href="#" aria-label="微博">微博</a>
+          <a href="#" aria-label="X / Twitter">X</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+          <a href="#" aria-label="GitHub">GitHub</a>
+          <a href="#" aria-label="邮件">Email</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>©2026 cyjpj — 保留所有权利</p>
+        <a href="#top" class="to-top mono">回到顶部 ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== 回到顶部 ======== -->
+  <button class="to-top-btn" id="toTopBtn" aria-label="回到顶部" title="回到顶部">↑</button>
+
+  <!-- ======== 灯箱（摄影大图） ======== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="关闭">&times;</button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
