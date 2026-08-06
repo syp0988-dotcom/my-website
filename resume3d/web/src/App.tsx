@@ -42,7 +42,7 @@ const COPY = {
   zh: {
     title: 'About cyjpj',
     paragraphs: [
-      '我是 cyjpj（孙严培）——一名专注 RAG 与 AI Agent 开发的本科生，就读于南阳理工学院计算机与软件学院。热爱开源，熟悉 Agent 架构、LangGraph 与检索增强生成全链路，喜欢用工程化的方式把想法变成稳定好用的产品。',
+      '我是 cyjpj——一名专注 RAG 与 AI Agent 开发的本科生，就读于南阳理工学院计算机与软件学院。热爱开源，熟悉 Agent 架构、LangGraph 与检索增强生成全链路，喜欢用工程化的方式把想法变成稳定好用的产品。',
     ],
   },
 }

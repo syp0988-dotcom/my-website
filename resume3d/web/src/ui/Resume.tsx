@@ -85,7 +85,7 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         groups: [
           {
             heading: 'Let’s connect',
-            items: ['GitHub: github.com/syp0988-dotcom', 'Email: syp0988@gmail.com', 'Tel: 18736638220'],
+            items: ['GitHub: github.com/syp0988-dotcom', 'Email: syp0988@gmail.com'],
             links: SOCIAL_LINKS,
           },
         ],
@@ -142,7 +142,7 @@ const RESUME: Record<'en' | 'zh', { title: string; entries: ResumeEntry[] }> = {
         groups: [
           {
             heading: '保持联系',
-            items: ['GitHub：github.com/syp0988-dotcom', '邮箱：syp0988@gmail.com', '电话：18736638220'],
+            items: ['GitHub：github.com/syp0988-dotcom', '邮箱：syp0988@gmail.com'],
             links: SOCIAL_LINKS,
           },
         ],
